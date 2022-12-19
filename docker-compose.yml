@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: docker/composer.Dockerfile
     volumes:
-    - './:/var/www/html:delegated'
+    - './:/var/www/html'
     - 'composer_cache:/tmp'
     tty: true
     network_mode: host
