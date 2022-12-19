@@ -2,7 +2,6 @@ version: '3.8'
 
 services:
 
-
   composer:
     build:
       context: .
@@ -13,7 +12,6 @@ services:
     tty: true
     network_mode: host
     container_name: 'composer'
-
 
   php:
     build:
@@ -26,6 +24,15 @@ services:
     network_mode: host
     container_name: 'php'
 
+  phing:
+    build:
+      context: .
+      dockerfile: docker/phing.Dockerfile
+    tty: true
+    container_name: 'phing'
+    volumes:
+    - './build/logs/:/var/www/html/build/logs/'
+    network_mode: host
 
 volumes:
   composer_cache:
