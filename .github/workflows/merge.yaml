@@ -1,0 +1,19 @@
+name: Build
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  test:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Generate code coverage badge
+      uses: timkrase/phpunit-coverage-badge@v1.2.0
+      with:
+        push_badge: true
+        report: build/logs/clover.xml
+        repo_token: ${{ secrets.GITHUB_TOKEN }}

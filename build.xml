@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="EricksonReyes/pagination" default="build">
+    <property name="source" value="${project.basedir}/src/EricksonReyes"/>
+    <property name="phpcs.reportsdir" value="${project.basedir}/build/logs/phpcs"/>
+    <property name="phpmd.reportsdir" value="${project.basedir}/build/logs/phpmd"/>
+    <property name="phpcpd.reportsdir" value="${project.basedir}/build/logs/phpcpd"/>
+    <property name="phpmnd.reportsdir" value="${project.basedir}/build/logs/phpmnd"/>
+    <property name="coverage.reportsdir" value="${project.basedir}/build/logs/phpspec_coverage"/>
+    <target name="build" depends="main"/>
+
+    <!-- ============================================  -->
+    <!-- Target: Main PHPCS target                     -->
+    <!-- ============================================  -->
+    <target name="main">
+        <phingcall target="Reset build log folders"/>
+        <phingcall target="Beautify source code"/>
+        <phingcall target="Check for duplicate codes"/>
+        <phingcall target="Check for php syntax errors"/>
+        <phingcall target="Check for runtime breaking dump calls"/>
+        <phingcall target="Check PSR2 coding standard compliance"/>
+        <phingcall target="Check for magic number violations"/>
+        <phingcall target="Check for clean code violations"/>
+        <phingcall target="Perform unit testing"/>
+        <phingcall target="Check for acceptance criteria failures"/>
+    </target>
+
+    <!-- ============================================  -->
+    <!-- Target: Empty Reports Folders                 -->
+    <!-- ============================================  -->
+    <target name="Reset build log folders" description="Empty Reports Folder">
+        <delete dir="${phpcpd.reportsdir}" quiet="true"/>
+        <mkdir dir="${phpcpd.reportsdir}"/>
+        <delete dir="${phpcs.reportsdir}" quiet="true"/>
+        <mkdir dir="${phpcs.reportsdir}"/>
+        <delete dir="${phpmnd.reportsdir}" quiet="true"/>
+        <mkdir dir="${phpmnd.reportsdir}"/>
+        <delete dir="${phpmd.reportsdir}" quiet="true"/>
+        <mkdir dir="${phpmd.reportsdir}"/>
+        <delete dir="${coverage.reportsdir}" quiet="true"/>
+        <mkdir dir="${coverage.reportsdir}"/>
+    </target>
+
+    <!-- ============================================  -->
+    <!-- Target: PHPCBF                                -->
+    <!-- ============================================  -->
+    <target name="Beautify source code" description="PHP Code Beautifier">
+        <exec
+                logoutput="true"
+                checkreturn="false"
+                passthru="true"
+                command="vendor/bin/phpcbf
+                    -p
+                    --standard=PSR2
+                    --extensions=php
+                    '${project.basedir}/tests/'
+                    '${project.basedir}/src/'
+                "
+        />
+    </target>
+
+    <!-- ============================================  -->
+    <!-- Target: PHPCPD                                -->
+    <!-- ============================================  -->
+    <target name="Check for duplicate codes" description="Generate pmd-cpd.xml using PHPCPD">
+        <exec
+                logoutput="true"
+                checkreturn="true"
+                passthru="true"
+                command="vendor/bin/phpcpd
+                    --log-pmd
+                    '${phpcpd.reportsdir}/pmd-cpd.xml'
+                    '${project.basedir}/tests/'
+                    '${project.basedir}/src/'
+                "
+        />
+    </target>
+
+    <!-- ============================================  -->
+    <!-- Target: PHPLINT                               -->
+    <!-- ============================================  -->
+    <target name="Check for php syntax errors" description="Check for php syntax errors">
+        <exec
+                logoutput="true"
+                checkreturn="true"
+                passthru="true"
+                command="vendor/bin/parallel-lint
+                    -e php
+                    --colors
+                    '${project.basedir}/tests/'
+                    '${project.basedir}/src/'
+                "
+        />
+    </target>
+
+    <!-- ============================================  -->
+    <!-- Target: PHPVDC                                -->
+    <!-- ============================================  -->
+    <target name="Check for runtime breaking dump calls"
+            description="Check for runtime breaking dump calls like var_dump, print_r and etc.">
+        <exec
+                logoutput="true"
+                checkreturn="true"
+                passthru="true"
+                command="vendor/bin/var-dump-check
+                    --symfony
+                    --laravel
+                    --doctrine
+                    --extensions php
+                    '${project.basedir}/tests/'
+                    '${project.basedir}/src/'
+                "
+        />
+    </target>
+
+    <!-- ============================================  -->
+    <!-- Target: PHPCS                                 -->
+    <!-- ============================================  -->
+    <target name="Check PSR2 coding standard compliance" description="Check for coding standard violations">
+        <exec
+                logoutput="true"
+                checkreturn="true"
+                passthru="true"
+                command="vendor/bin/phpcs
+                    -p
+                    --colors
+                    --cache
+                    --standard=PSR2
+                    --report-full='${phpcs.reportsdir}/report.txt'
+                    '${project.basedir}/src/'
+                "
+        />
+    </target>
+
+    <!-- ============================================  -->
+    <!-- Target: PHPMND                                 -->
+    <!-- ============================================  -->
+    <target name="Check for magic number violations" description="Detect clean code violations">
+        <exec
+                logoutput="true"
+                checkreturn="true"
+                passthru="true"
+                command="vendor/bin/phpmnd
+                    --hint
+                    --ansi
+                    --progress
+                    --include-numeric-string
+                    --xml-output='${phpmnd.reportsdir}/phpmnd.xml'
+                    '${project.basedir}/tests/'
+                    '${project.basedir}/src/'
+           "
+        />
+    </target>
+
+    <!-- ============================================  -->
+    <!-- Target: PHPMD                                 -->
+    <!-- ============================================  -->
+
+
+    <target name="Check for clean code violations" description="Detect clean code violations">
+        <exec
+                logoutput="true"
+                checkreturn="true"
+                passthru="true"
+                command="vendor/bin/phpmd
+                    '${project.basedir}/src/'
+                    html
+                    '${project.basedir}/phpmd.xml'
+                    --reportfile '${phpmd.reportsdir}/index.html'
+                    --suffixes php
+                    "
+        />
+    </target>
+
+    <!-- ============================================  -->
+    <!-- Target: PhpSpec                               -->
+    <!-- ============================================  -->
+    <target name="Perform unit testing" description="Unit Testing">
+        <exec
+                logoutput="true"
+                checkreturn="true"
+                passthru="true"
+                command="vendor/bin/phpspec run --config '${project.basedir}/phpspec.yml'"
+        />
+    </target>
+
+    <!-- ============================================  -->
+    <!-- Target: Behat                                 -->
+    <!-- ============================================  -->
+    <target name="Check for acceptance criteria failures" description="Acceptance Criteria Testing">
+        <exec
+                logoutput="true"
+                checkreturn="true"
+                passthru="true"
+                command="vendor/bin/behat --no-interaction --stop-on-failure --no-snippets --colors"
+        />
+    </target>
+
+</project>

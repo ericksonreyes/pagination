@@ -1,0 +1,18 @@
+formatter.name: pretty
+stop_on_failure: true
+
+suites:
+  default:
+    namespace: 'EricksonReyes'
+    src_path: '%paths.config%'
+    spec_path: '%paths.config%/tests'
+
+extensions:
+  FriendsOfPhpSpec\PhpSpec\CodeCoverage\CodeCoverageExtension:
+    format:
+    - clover
+    - html
+    - text
+    output:
+      html: ./build/logs/phpspec_coverage
+      clover: ./build/logs/clover.xml

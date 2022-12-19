@@ -1,0 +1,11 @@
+default:
+  formatters:
+    pretty: true
+  autoload:
+    '': '%paths.base%/tests/acceptance/bootstrap'
+  suites:
+    default:
+      paths:
+      - '%paths.base%/tests/acceptance'
+      contexts:
+      - FeatureContext
