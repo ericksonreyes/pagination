@@ -18,7 +18,10 @@ Controller
 ```php
 namespace App\Http\Controllers;
 
-use App\Repository\UserRepository;use Illuminate\Http\Request;use Illuminate\Http\Response;use Illuminate\Routing\Controller as BaseController;
+use App\Repository\UserRepository;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Controller as BaseController;
 
 class Users extends BaseController {
 
