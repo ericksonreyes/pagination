@@ -198,7 +198,7 @@ See [MIT LICENSE.md](LICENSE.md)
 
 ### Github Runner
 
-Just in case I forget that I am using a Github self-hosted runner. I should look for a `Github Runner` folder and
-run `sh run.sh`.
+Just in case I forget that I am using a Github self-hosted runner. I should look for a `actions-runner` folder in the
+root directory and run `sh run.sh`.
 Or just do it all read the [Documentation](https://github.com/ericksonreyes/docker-images/settings/actions/runners/new)
 and do it all over again. 
