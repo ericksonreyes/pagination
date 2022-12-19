@@ -9,3 +9,5 @@ RUN mkdir -p build/logs/
 RUN composer install
 
 CMD [ "php", "vendor/bin/phing" ]
+
+
