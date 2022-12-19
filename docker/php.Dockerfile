@@ -1,18 +1,14 @@
 FROM php:8.1.13-cli-alpine
 
-RUN apk update && apk add curl git wget ncurses
-
 RUN apk add --update --no-cache --virtual .build-dependencies $PHPIZE_DEPS
+
+RUN apk update && apk add curl git wget ncurses
 
 RUN pecl update-channels
 
-RUN docker-php-ext-install bcmath sockets opcache && docker-php-ext-enable opcache && pecl install apcu && docker-php-ext-enable apcu && pecl install pcov && docker-php-ext-enable pcov
+RUN pecl install pcov && docker-php-ext-enable pcov
 
 RUN mkdir /var/log/php && chown -R www-data:www-data /var/log/php
-
-WORKDIR /usr/local/etc/php/conf.d/
-
-COPY docker/config/php/php.ini .
 
 WORKDIR /tmp
 
