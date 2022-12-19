@@ -1,7 +1,7 @@
 # Pagination Class
 
 ![Code Coverage](https://github.com/ericksonreyes/pagination/raw/main/coverage_badge.svg)
-![Build Status](https://github.com/ericksonreyes/pagination/actions/workflows/pull.yml/badge.svg)
+[![Build](https://github.com/ericksonreyes/pagination/actions/workflows/merge.yaml/badge.svg?branch=master)](https://github.com/ericksonreyes/pagination/actions/workflows/merge.yaml)
 
 Nothing fancy. I just created a pagination class that I've been copy-pasting over and over again.
 
