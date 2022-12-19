@@ -1,6 +1,6 @@
 # Pagination Class
 
-![Code Coverage](https://github.com/ericksonreyes/pagination/raw/main/coverage_badge.svg)
+![Code Coverage](https://github.com/ericksonreyes/pagination/raw/master/coverage_badge.svg)
 [![Build](https://github.com/ericksonreyes/pagination/actions/workflows/merge.yaml/badge.svg?branch=master)](https://github.com/ericksonreyes/pagination/actions/workflows/merge.yaml)
 
 Nothing fancy. I just created a pagination class that I've been copy-pasting over and over again.
@@ -11,7 +11,7 @@ Nothing fancy. I just created a pagination class that I've been copy-pasting ove
 composer require ericksonreyes/pagination
 ```
 
-### Example (Laravel + Blade Templating)
+### Example (Laravel)
 
 Controller
 
@@ -53,13 +53,9 @@ class Users extends BaseController {
 }
 ```
 
-View
+View (Blade Templating)
 
 ```php
-/**
-* list.blade.php
-*/
-
 @if(isset($pagination) && $pagination->hasPages())
     <ul class="pagination">
     
@@ -81,7 +77,7 @@ View
         @endif                    
         
         @foreach($pagination->pages() as $page)
-            @if($page === $pagination->currentPage())
+            @if($pagination->currentPage() === $page)
                 <li><span class="span--strong">{{ $page }}</span></li>
             @else
                 <li>
@@ -112,10 +108,89 @@ View
 @endif
 ```
 
+View (Vanilla PHP)
+
+```php
+<?php 
+    if(isset($pagination) && $pagination->hasPages()) {
+        
+        ?><ul class="pagination"><?php
+        
+        
+        if($pagination->hasPreviousPage()) {
+          ?>
+            <li>
+                <a href="<?php echo route('records.list', ['page' => $pagination->previousPage()]) ?>">
+                    Previous
+                </a>
+            </li>
+          <?php
+        }
+
+
+        if ($pagination->hasFirstPage()) {
+          ?>
+            <li>
+                <a href="<?php echo route('records.list', ['page' => $pagination->firstPage()]) ?>">
+                    <?php echo $pagination->firstPage() ?>
+                </a>
+            </li>
+            <li>...</li>
+          <?php
+        }
+        
+        
+        foreach($pagination->pages() as $page) {
+          if($pagination->currentPage() === $page) { 
+            ?>
+              <li>
+                <span class="span--strong"><?php echo $page; ?></span>
+              </li>
+            <?php 
+          } 
+          else { 
+            ?>
+              <li>
+                <a href="<?php echo route('records.list', ['page' => $page]) ?>">
+                  <?php echo $page ?>
+                </a>
+              </li>
+            <?php
+          } 
+        } 
+        
+        
+      if($pagination->hasLastPage()) {
+        ?>
+          <li>...</li>
+          <li>
+              <a href="<?php echo route('records.list', ['page' => $pagination->lastPage()]) ?>">
+                  <?php echo $pagination->lastPage() ?>
+              </a>
+          </li>
+        <?php
+      } 
+      
+      
+      if($pagination->hasNextPage()) { 
+        ?>
+          <li>
+            <a href="<?php echo route('records.list', ['page' => $pagination->hasNextPage()]) ?>">                
+                Next
+            </a>
+          </li>
+        <?php 
+      }
+           
+      ?></ul><?php 
+    } 
+  ?>
+```
+
 ### Author
 
-* Erickson Reyes. [GitHub](https://github.com/ericksonreyes), [LinkedIn](https://www.linkedin.com/in/ericksonreyes/).
-  and [Packagist](http://packagist.org/users/ericksonreyes/)
+* Erickson Reyes ([GitHub](https://github.com/ericksonreyes), [LinkedIn](https://www.linkedin.com/in/ericksonreyes/)
+  and [Packagist](http://packagist.org/users/ericksonreyes/)).
 
 ### License
 
