@@ -1,4 +1,4 @@
-# Pagination Class
+# Simple Pagination Class for PHP 8.1
 
 ![Code Coverage](https://github.com/ericksonreyes/pagination/raw/master/coverage_badge.svg)
 [![Build](https://github.com/ericksonreyes/pagination/actions/workflows/merge.yaml/badge.svg?branch=master)](https://github.com/ericksonreyes/pagination/actions/workflows/merge.yaml)
@@ -195,3 +195,10 @@ View (Vanilla PHP)
 ### License
 
 See [MIT LICENSE.md](LICENSE.md)
+
+### Github Runner
+
+Just in case I forget that I am using a Github self-hosted runner. I should look for a `Github Runner` folder and
+run `sh run.sh`.
+Or just do it all read the [Documentation](https://github.com/ericksonreyes/docker-images/settings/actions/runners/new)
+and do it all over again. 

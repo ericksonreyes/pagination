@@ -52,8 +52,7 @@ class Pagination implements PaginationInterface
         private readonly int $recordsPerPage,
         private readonly int $currentPage,
         private readonly int $numberOfVisiblePages = 10
-    )
-    {
+    ) {
         $this->calculatePages();
     }
 
@@ -69,8 +68,7 @@ class Pagination implements PaginationInterface
         int $recordsPerPage,
         int $currentPage,
         int $numberOfVisiblePages = 10
-    ): PaginationInterface
-    {
+    ): PaginationInterface {
         return new self($recordsFound, $recordsPerPage, $currentPage, $numberOfVisiblePages);
     }
 
