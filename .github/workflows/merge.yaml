@@ -12,7 +12,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
     - name: Perform code quality tests
-      run: docker-compose run --rm php vendor/bin/phing
+      run: docker-compose run --rm phing
     - name: Generate code coverage badge
       uses: timkrase/phpunit-coverage-badge@v1.2.0
       with:
