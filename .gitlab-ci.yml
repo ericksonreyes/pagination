@@ -1,0 +1,19 @@
+image: docker/compose:1.29.2
+
+
+
+stages:
+- test
+
+
+code-quality-test:
+  stage: test
+  image:
+    name: docker/compose:1.29.2
+  services:
+  - name: docker:dind
+  script:
+  - docker-compose run --rm phing
+  only:
+  - master
+  when: on_success
