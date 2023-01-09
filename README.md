@@ -192,9 +192,14 @@ View (Vanilla PHP)
 
 ### Author
 
-* Erickson Reyes ([GitHub](https://github.com/ericksonreyes), [LinkedIn](https://www.linkedin.com/in/ericksonreyes/)
+* Erickson
+  Reyes ([GitHub](https://github.com/ericksonreyes), [GitLab](https://gitlab.com/ericksonreyes/), [LinkedIn](https://www.linkedin.com/in/ericksonreyes/)
   and [Packagist](http://packagist.org/users/ericksonreyes/)).
 
 ### License
 
 See [MIT LICENSE.md](LICENSE.md)
+
+### Gitlab
+
+This project is also available in [GitLab](https://gitlab.com/ericksonreyes/pagination) 
