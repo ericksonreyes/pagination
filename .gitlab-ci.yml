@@ -1,10 +1,7 @@
 image: docker/compose:1.29.2
 
-
-
 stages:
 - test
-
 
 code-quality-test:
   stage: test

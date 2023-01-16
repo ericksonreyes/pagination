@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="EricksonReyes/pagination" default="build">
+<project name="EricksonReyes/Pagination" default="build">
     <property name="source" value="${project.basedir}/src/EricksonReyes"/>
     <property name="phpcs.reportsdir" value="${project.basedir}/build/logs/phpcs"/>
     <property name="phpmd.reportsdir" value="${project.basedir}/build/logs/phpmd"/>

@@ -1,4 +1,4 @@
-# Simple Pagination Class for PHP 8.1
+# Simple Pagination Class for PHP 8
 
 ![Code Coverage](https://github.com/ericksonreyes/pagination/raw/master/coverage_badge.svg)
 [![Build](https://github.com/ericksonreyes/pagination/actions/workflows/merge.yaml/badge.svg?branch=master)](https://github.com/ericksonreyes/pagination/actions/workflows/merge.yaml)
@@ -198,7 +198,7 @@ View (Vanilla PHP)
 
 ### License
 
-See [MIT LICENSE.md](LICENSE.md)
+See [LICENSE](LICENSE)
 
 ### Gitlab
 
