@@ -34,14 +34,13 @@
   },
   "autoload": {
     "psr-4": {
-      "EricksonReyes\\Pagination\\": "src/"
+      "EricksonReyes\\": "src/EricksonReyes",
+      "": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Tests\\": "tests/",
-      "spec\\": "tests/spec/",
-      "acceptance\\": "tests/acceptance/"
+      "spec\\": "spec/"
     }
   },
   "config": {

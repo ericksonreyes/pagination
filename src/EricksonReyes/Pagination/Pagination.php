@@ -61,7 +61,7 @@ class Pagination implements PaginationInterface
      * @param int $recordsPerPage
      * @param int $currentPage
      * @param int $numberOfVisiblePages
-     * @return \EricksonReyes\Pagination\PaginationInterface
+     * @return \EricksonReyes\Pagination\EricksonReyes\Pagination\PaginationInterface
      */
     public static function create(
         int $recordsFound,

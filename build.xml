@@ -52,7 +52,8 @@
                     -p
                     --standard=PSR2
                     --extensions=php
-                    '${project.basedir}/tests/'
+                    '${project.basedir}/feature/'
+                    '${project.basedir}/spec/'
                     '${project.basedir}/src/'
                 "
         />
@@ -69,7 +70,8 @@
                 command="vendor/bin/phpcpd
                     --log-pmd
                     '${phpcpd.reportsdir}/pmd-cpd.xml'
-                    '${project.basedir}/tests/'
+                    '${project.basedir}/feature/'
+                    '${project.basedir}/spec/'
                     '${project.basedir}/src/'
                 "
         />
@@ -86,7 +88,8 @@
                 command="vendor/bin/parallel-lint
                     -e php
                     --colors
-                    '${project.basedir}/tests/'
+                    '${project.basedir}/feature/'
+                    '${project.basedir}/spec/'
                     '${project.basedir}/src/'
                 "
         />
@@ -106,7 +109,8 @@
                     --laravel
                     --doctrine
                     --extensions php
-                    '${project.basedir}/tests/'
+                    '${project.basedir}/feature/'
+                    '${project.basedir}/spec/'
                     '${project.basedir}/src/'
                 "
         />
@@ -145,7 +149,8 @@
                     --progress
                     --include-numeric-string
                     --xml-output='${phpmnd.reportsdir}/phpmnd.xml'
-                    '${project.basedir}/tests/'
+                    '${project.basedir}/feature/'
+                    '${project.basedir}/spec/'
                     '${project.basedir}/src/'
            "
         />
