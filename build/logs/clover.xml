@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1687302092">
-  <project timestamp="1687302092">
+<coverage generated="1687305011">
+  <project timestamp="1687305011">
     <file name="/var/www/html/src/EricksonReyes/Pagination/Pagination.php">
       <class name="EricksonReyes\Pagination\Pagination" namespace="global">
         <metrics complexity="44" methods="20" coveredmethods="20" conditionals="0" coveredconditionals="0" statements="60" coveredstatements="60" elements="80" coveredelements="80"/>
