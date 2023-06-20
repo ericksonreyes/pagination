@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="EricksonReyes/Pagination" default="build">
     <property name="source" value="${project.basedir}/src/EricksonReyes"/>
+    <property name="builddir" value="${project.basedir}/build"/>
+    <property name="reportsdir" value="${project.basedir}/build/logs"/>
     <property name="phpcs.reportsdir" value="${project.basedir}/build/logs/phpcs"/>
     <property name="phpmd.reportsdir" value="${project.basedir}/build/logs/phpmd"/>
     <property name="phpcpd.reportsdir" value="${project.basedir}/build/logs/phpcpd"/>
@@ -28,6 +30,8 @@
     <!-- Target: Empty Reports Folders                 -->
     <!-- ============================================  -->
     <target name="Reset build log folders" description="Empty Reports Folder">
+        <mkdir dir="${builddir}"/>
+        <mkdir dir="${reportsdir}"/>
         <delete dir="${phpcpd.reportsdir}" quiet="true"/>
         <mkdir dir="${phpcpd.reportsdir}"/>
         <delete dir="${phpcs.reportsdir}" quiet="true"/>
