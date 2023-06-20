@@ -1,4 +1,5 @@
 /.idea
 /vendor
 .DS_Store
-/build
+/build/logs/*
+!/build/logs/clover.xml
